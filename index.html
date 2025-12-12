@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnSense - Adaptive AI Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Defaulting to the requested Dark Theme Palette */
+        /* Primary: Deep Navy #0A0F24 */
+        --base: 10 15 36;
+        /* Surface: Slightly Lighter Navy/Blue for cards #111835 */
+        --surface: 17 24 53;
+        /* Secondary: Bright Blue #1A73E8 (Google Blueish) */
+        --brand: 26 115 232;
+        --secondary: 255 255 255; /* Text is white on dark */
+        /* Accent: Gold #FFB800 */
+        --accent: 255 184 0;
+        --accent-hover: 230 165 0;
+      }
+      
+      /* Light mode override if needed (though prompt requested Navy primary) */
+      .light {
+        --base: 248 250 252;
+        --surface: 255 255 255;
+        --secondary: 10 15 36; 
+        --brand: 26 115 232;
+        --accent: 255 184 0; 
+      }
+    </style>
+    <script>
+      function color(variable) {
+        return ({ opacityValue }) => {
+          if (opacityValue === undefined) {
+            return `rgb(var(${variable}))`
+          }
+          return `rgb(var(${variable}) / ${opacityValue})`
+        }
+      }
+      
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              base: color('--base'),
+              secondary: color('--secondary'),
+              brand: color('--brand'),
+              accent: color('--accent'),
+              'accent-hover': color('--accent-hover'),
+              surface: color('--surface'),
+              navy: {
+                900: '#0A0F24',
+                800: '#111835',
+                700: '#1A2342',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Poppins', 'sans-serif'],
+              handwriting: ['"Patrick Hand"', 'cursive'],
+            },
+            boxShadow: {
+              'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.3)',
+              'glow': '0 0 20px rgba(26, 115, 232, 0.4)',
+              'gold-glow': '0 0 25px rgba(255, 184, 0, 0.3)',
+            },
+            borderRadius: {
+              '3xl': '1.5rem',
+              '4xl': '2rem',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.6s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              'pulse-glow': 'pulseGlow 2s infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              pop: {
+                '0%': { transform: 'scale(0.95)' },
+                '50%': { transform: 'scale(1.02)' },
+                '100%': { transform: 'scale(1)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { boxShadow: '0 0 10px rgba(255, 184, 0, 0.1)' },
+                '50%': { boxShadow: '0 0 25px rgba(255, 184, 0, 0.4)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.560.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "mermaid": "https://esm.sh/mermaid@11.1.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-base text-secondary font-sans antialiased selection:bg-accent selection:text-black transition-colors duration-300">
+    <div id="root"></div>
+  </body>
+</html>

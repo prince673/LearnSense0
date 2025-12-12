@@ -1,0 +1,5 @@
+{
+  "name": "LearnSense AI Tutor",
+  "description": "An adaptive AI tutor that bridges the gap between expert video content and handwritten student notes using Gemini 3 Pro.",
+  "requestFramePermissions": []
+}
